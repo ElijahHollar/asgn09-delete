@@ -182,6 +182,23 @@
         return $sanitized;
     }
 
+    public function delete() {
+        $sql = "DELETE FROM birds ";
+        $sql .= "WHERE id=" . self::$database->quote($this->id) . " ";
+        $sql .= "LIMIT 1";
+        $stmt = self::$database->prepare($sql);
+        $stmt->bindValue(':id', $this->id);
+        $result = $stmt->execute();
+        return $result;
+
+        // After deleting, the instance of the object will still 
+        // exist even though the database record does not. 
+        // This can be useful as in:
+        //  echo $user->first_name . " was deleted.";
+        // but, for example, we can't call $user->update() after
+        // calling $user->delete().
+    }
+
     public function conservation() {
         // echo self::CONSERVATION_OPTIONS[$this->conservation_id];
         if( $this->conservation_id > 0 ) {

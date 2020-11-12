@@ -29,6 +29,7 @@
   
   include('classes/database_object.class.php');
   include('classes/bird.class.php');
+  include('classes/admin.class.php');
   include('classes/parsecsv.class.php');
   // Autoload class definitions
 

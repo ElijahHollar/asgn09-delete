@@ -27,6 +27,7 @@
   require_once('db_credentials.php');
   require_once('db_functions.php');
   
+  include('classes/database_object.class.php');
   include('classes/bird.class.php');
   include('classes/parsecsv.class.php');
   // Autoload class definitions
@@ -40,6 +41,6 @@
   spl_autoload_register('my_autoload');
 
   $database = db_connect();
-  Bird::set_database($database);
+  DatabaseObject::set_database($database);
 
 ?>

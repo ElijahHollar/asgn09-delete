@@ -147,4 +147,12 @@ class DatabaseObject {
     // calling $user->delete().
   }
 
+  public function validate() {
+    $this->errors = [];
+
+    // Add custom validations
+
+    return $this->errors;
+  }
+
 }

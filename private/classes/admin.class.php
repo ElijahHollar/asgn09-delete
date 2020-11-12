@@ -27,4 +27,17 @@
         return $this->first_name . " " . $this->last_name;
     }
 
+    protected function set_hashed_password() {
+        $this->hashed_password = password_hash($this->password, PASSWORD_BCRYPT);
+    }
+
+    public function create() {
+        $this->set_hashed_password();
+        return parent::create();
+    }
+
+    public function update() {
+        $this->set_hashed_password();
+        return parent::update();
+    }
 }

@@ -53,6 +53,9 @@ class DatabaseObject {
   }
 
   public function create() {
+    $this->validate();
+    if(!empty($this->errors)) { return false; }
+    
     $attributes = $this->sanitized_attributes();
     $sql = "INSERT INTO " . static::$table_name . " (";
     $sql .= join(', ', array_keys($attributes));
@@ -79,6 +82,9 @@ class DatabaseObject {
   }
 
   protected function update() {
+    $this->validate();
+    if(!empty($this->errors)) { return false; }
+
     $attributes = $this->sanitized_attributes();
     $attribute_pairs = [];
     foreach($attributes as $key => $value) {
@@ -147,7 +153,7 @@ class DatabaseObject {
     // calling $user->delete().
   }
 
-  public function validate() {
+  protected function validate() {
     $this->errors = [];
 
     // Add custom validations

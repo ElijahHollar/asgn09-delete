@@ -20,7 +20,7 @@ if(is_post_request()) {
 
   if($result === true) {
     $_SESSION['message'] = 'The admin was updated successfully.';
-    redirect_to(url_for('/staff/admins/show.php?id=' . $id));
+    redirect_to(url_for('/bird-staff/admins/show.php?id=' . $id));
   } else {
     // show errors
   }

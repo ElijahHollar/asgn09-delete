@@ -61,5 +61,17 @@
         }
     }
 
+    protected function validate() {
+        if(is_blank($this->common_name)) {
+            $this->errors[] = "Common Name cannot be blank.";
+        }
+        if(is_blank($this->habitat)) {
+            $this->errors[] = "Habitat cannot be blank.";
+        }
+        if(is_blank($this->food)) {
+            $this->errors[] = "Food cannot be blank.";
+        }
+        return $this->errors;
+    }
 
 }
